@@ -34,91 +34,172 @@ Figma
 
 ## CODE:
 ```
-import { CheckCircle2 } from 'lucide-react';
-import { Button } from './ui/button';
-import logo from 'figma:asset/0b30f62e93f9bbd861fdc65d629f464b8af4bc1d.png';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-interface ThankYouScreenProps {
-  onBackToHome: () => void;
-}
+    .container {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(to bottom, #bae6fd, #fef9c3, #ffedd5);
+      border: 8px solid black;
+      border-radius: 25px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
 
-export function ThankYouScreen({ onBackToHome }: ThankYouScreenProps) {
-  return (
-    <div className="relative bg-gradient-to-b from-sky-200 via-sky-100 to-orange-100 rounded-3xl overflow-hidden shadow-2xl border-8 border-black h-full flex flex-col">
-      {/* Sports Background Image */}
-      <div 
-        className="absolute inset-0 opacity-15 bg-cover bg-center"
-        style={{ backgroundImage: `url(https://images.unsplash.com/photo-1699134710640-c2b282ba8e11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwdHJhY2slMjBhdGhsZXRpY3N8ZW58MXx8fHwxNzYyNjI3ODA2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)` }}
-      ></div>
+    .bg-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      z-index: 0;
+    }
 
-      {/* Header */}
-      <div className="relative z-10 bg-blue-600/95 backdrop-blur-sm text-white p-3 flex items-center justify-center">
-        <img src={logo} alt="Saveetha Engineering College" className="h-10 object-contain" />
-      </div>
+    .header {
+      position: relative;
+      background: rgba(37, 99, 235, 0.93);
+      color: white;
+      padding: 12px;
+      text-align: center;
+      z-index: 2;
+    }
 
-      {/* Content */}
-      <div className="flex-1 flex flex-col items-center justify-center p-8 relative z-10">
-        {/* Decorative triangles */}
-        <div className="absolute top-12 right-8 w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[35px] border-b-purple-400/50"></div>
-        <div className="absolute top-24 right-16 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[25px] border-b-orange-400/50"></div>
-        <div className="absolute bottom-32 left-8 w-0 h-0 border-l-[18px] border-l-transparent border-r-[18px] border-r-transparent border-b-[30px] border-b-yellow-400/50"></div>
+    .header img {
+      height: 40px;
+      object-fit: contain;
+    }
 
-        {/* Success Icon */}
-        <div className="mb-6">
-          <CheckCircle2 className="w-24 h-24 text-green-500" />
-        </div>
+    .content {
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
 
-        {/* Thank You Message */}
-        <h1 className="text-teal-600 text-center mb-4">
-          THANK YOU
-        </h1>
-        
-        <p className="text-center text-gray-700 max-w-xs mb-8">
-          We are all eagerly waiting for your participation in the sports events
-        </p>
+    h1 {
+      font-size: 34px;
+      margin: 0 0 10px;
+      color: #0f766e;
+      font-weight: bold;
+    }
 
-        {/* Back to Home Button */}
-        <Button 
-          onClick={onBackToHome}
-          className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-6 rounded-xl shadow-lg"
-        >
-          Back to Home
-        </Button>
-      </div>
+    p {
+      color: #495057;
+      font-size: 16px;
+      max-width: 260px;
+      margin-bottom: 25px;
+    }
 
-      {/* Footer with sports silhouettes */}
-      <div className="relative h-40 z-10">
-        <div className="absolute bottom-0 left-0 right-0">
-          {/* Stadium/court gradient background */}
-          <div className="h-32 bg-gradient-to-t from-orange-500 via-orange-400 to-transparent opacity-80"></div>
-          
-          {/* Athlete silhouettes */}
-          <div className="absolute bottom-8 left-12 flex gap-8">
-            {/* Basketball player */}
-            <div className="relative">
-              <div className="w-16 h-24 bg-black rounded-t-full opacity-90"></div>
-              <div className="absolute -top-4 left-6 w-6 h-6 bg-orange-600 rounded-full"></div>
-            </div>
-            
-            {/* Runner */}
-            <div className="w-20 h-20 bg-black rounded-t-full opacity-90 mt-4"></div>
-          </div>
+    .success-icon svg {
+      width: 90px;
+      height: 90px;
+      fill: #22c55e;
+    }
 
-          {/* Trophy/medal illustration */}
-          <div className="absolute bottom-12 right-12">
-            <div className="w-16 h-20 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-lg opacity-90"></div>
-            <div className="absolute -top-2 left-4 w-8 h-8 bg-yellow-500 rounded-full"></div>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-4 left-0 right-0 text-center text-teal-600 text-xs">
-          Contact us:<br />
-          sports@saveetha.ac.in
-        </div>
-      </div>
+    .btn {
+      background: #14b8a6;
+      padding: 14px 35px;
+      color: white;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #0d9488;
+    }
+
+    .footer {
+      position: relative;
+      height: 160px;
+      z-index: 2;
+    }
+
+    .footer-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 130px;
+      background: linear-gradient(to top, #fb923c, #fdba74, transparent);
+      opacity: 0.8;
+    }
+
+    .footer-text {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #0f766e;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="bg-img" style="background-image: url('https://images.unsplash.com/photo-1699134710640-c2b282ba8e11?auto=format&fit=crop&w=1080');"></div>
+
+  <div class="header">
+    <img src="logo.png" alt="Saveetha Engineering College">
+  </div>
+
+  <div class="content">
+
+    <div class="success-icon">
+      <!-- Check Circle Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
     </div>
-  );
-}
+
+    <h1>THANK YOU</h1>
+
+    <p>We are all eagerly waiting for your participation in the sports events</p>
+
+    <button class="btn" onclick="goHome()">Back to Home</button>
+  </div>
+
+  <div class="footer">
+    <div class="footer-bg"></div>
+
+    <div class="footer-text">
+      Contact us:<br>
+      sports@saveetha.ac.in
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function goHome() {
+    // Replace with your homepage URL
+    window.location.href = "/";
+  }
+</script>
+
+</body>
+</html>
 
 ```
 ## OUTPUT:
